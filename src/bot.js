@@ -11,19 +11,19 @@ dotenv.config();
 const bot = new Telegraf(process.env.BOT_TOKEN);
 const baseUrl = "https://growtholic.in/blog/";
 const failedMsg = `
-Fetching blogs failed :( Please try again later,
+    Fetching blogs failed :( Please try again later,
     If problem persists try contacting the author!
-    `;
+`;
     
 const metaPath = path.join(__dirname,"data","meta.json");
-const metadata = JSON.parse(fs.readFileSync(metaPath));
+let metadata;
 let readMessage;
 let currentPage;
 
 //Routes
 bot.start((ctx) => ctx.reply(`
     Hello ${ctx.message.from.first_name},
-    Send /read to select and read blogs
+Send /read to select and read blogs
 `));
 
 //Refreshes the links (run atleast once a day to keep updated!)
@@ -43,7 +43,6 @@ bot.command("refresh",async (ctx) => {
                 const blogs = await getBlogs(pages[i]);
                 const blogPath = path.join(dataPath,`blog_page${i+1}.json`);
                 await fsPromises.writeFile(blogPath,JSON.stringify(blogs))
-                // console.log(blogs);
                 ctx.telegram.editMessageText(msg.chat.id,msg.message_id,undefined,`
                     ${i+1} of ${totalPages} pages done.
                 `)
@@ -68,6 +67,7 @@ bot.command("read",async (ctx) => {
     if(!fs.existsSync(metaPath))
         return ctx.reply("An error occurred, Please ask admin to refresh data!")
 
+    metadata = JSON.parse(fs.readFileSync(metaPath))
     const {message,keyboard} = readPage(currentPage,metadata.pages);
 
     readMessage = await ctx.reply(message,keyboard);
