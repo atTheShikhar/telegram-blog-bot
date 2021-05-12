@@ -9,7 +9,7 @@ const getBlogPages = require('./getBlogPages');
 const readPage = require('./readPage');
 //Configurations
 dotenv.config();
-const bot = new Composer(process.env.BOT_TOKEN);
+const bot = new Composer;
 const baseUrl = "https://growtholic.in/blog/";
 const failedMsg = `
     Fetching blogs failed :( Please try again later,

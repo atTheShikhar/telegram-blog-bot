@@ -5,7 +5,7 @@
   "main": "./src/bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "micro-bot"
+    "start": "micro-bot ./src/bot.js"
   },
   "author": "https://github.com/atTheShikhar",
   "license": "ISC",
