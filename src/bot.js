@@ -1,5 +1,5 @@
-const { Composer } = require("micro-bot");
-// const { Telegraf } = require('telegraf');
+// const { Composer } = require("micro-bot");
+const { Telegraf } = require('telegraf');
 const dotenv = require('dotenv');
 const fs = require('fs');
 const path = require('path');
@@ -9,7 +9,7 @@ const getBlogPages = require('./getBlogPages');
 const readPage = require('./readPage');
 //Configurations
 dotenv.config();
-const bot = new Composer;
+const bot = new Telegraf(process.env.BOT_TOKEN);
 const baseUrl = "https://growtholic.in/blog/";
 const failedMsg = `
     Fetching blogs failed :( Please try again later,
@@ -131,5 +131,4 @@ bot.action('prev',async (ctx) => {
 
 
 //Launch the bot
-// bot.launch();
-module.exports = bot;
+bot.launch();
