@@ -23,7 +23,14 @@ In order to run this bot you need to set some environment variables.
 
 ## Usage
 
-Currently this bot supports only two options: 
+Start the server using- 
+
+```bash
+npm start
+```
+
+Use one of the following commands on your telegram bot,
+Currently this bot supports only two commands: 
 
 * `/refresh <refresh key>`: Used to refresh blog data on the server (Run everytime new blog is added).
 * `/read`: Used by users to select and read blogs.
