@@ -12,7 +12,7 @@ const bot = new Telegraf(process.env.BOT_TOKEN);
 const baseUrl = "https://growtholic.in/blog/";
 const failedMsg = `
     Fetching blogs failed :( Please try again later,
-    If problem persists try contacting the author!
+    If problem persists try contacting the admin!
 `;
     
 const metaPath = path.join(__dirname,"data","meta.json");
@@ -25,6 +25,14 @@ bot.start((ctx) => ctx.reply(`
     Hello ${ctx.message.from.first_name},
 Send /read to select and read blogs
 `));
+
+bot.help(async (ctx) => {
+    await ctx.reply(`
+    /read - Read blogs
+/refresh <token> - Refresh blogs and metadata
+/help - Show this help
+    `);
+})
 
 //Refreshes the links (run atleast once a day to keep updated!)
 bot.command("refresh",async (ctx) => {
