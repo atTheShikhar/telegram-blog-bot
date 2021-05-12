@@ -1,6 +1,6 @@
 # Telegram Blog Bot
 
-This is a simple telegram bot that scrapes blogs from my friend's [website](https://growtholic.in/blog/)
+This is a simple telegram bot that scrapes blog links from my friend's [website](https://growtholic.in/blog/)
 
 ## Installation
 
