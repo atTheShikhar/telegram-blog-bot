@@ -2,6 +2,8 @@
 
 This is a simple telegram bot that scrapes blog links from my friend's [website](https://growtholic.in/blog/)
 
+Link: https://t.me/growtholic_blog_bot
+
 ## Installation
 
 Make sure you have [Node.js](https://nodejs.org/) installed and run
