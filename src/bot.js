@@ -23,15 +23,15 @@ let currentPage;
 
 //Routes
 bot.start((ctx) => ctx.reply(`
-    Hello ${ctx.message.from.first_name},
+    Hello ${ctx.message.from.first_name} 👋,
 Send /read to select and read blogs
 `));
 
 bot.help(async (ctx) => {
     await ctx.reply(`
-    /read - Read blogs
-/refresh <token> - Refresh blogs and metadata
-/help - Show this help
+    /read - Read blogs 📖
+/refresh <token> - Refresh blogs and metadata 🔁
+/help - Show this help ℹ️
     `);
 })
 
@@ -45,7 +45,7 @@ bot.command("refresh",async (ctx) => {
             if(!fs.existsSync(dataPath))
                 fs.mkdirSync(dataPath)
 
-            const msg = await ctx.reply("Processing...");
+            const msg = await ctx.reply("🔁 Processing...");
             const pages = await getBlogPages(baseUrl);
             const totalPages = pages.length;
             for (let i = 0; i < totalPages; i++) {
@@ -131,4 +131,9 @@ bot.action('prev',async (ctx) => {
 
 
 //Launch the bot
-bot.launch();
+bot.launch({
+    webhook: {
+        domain: process.env.URL,
+        port: process.env.PORT
+    }
+});

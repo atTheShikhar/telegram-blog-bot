@@ -2,7 +2,7 @@ const Telegraf = require('telegraf');
 const { Markup } = Telegraf;
 
 const createKeyboard = (noOfKeys) => {
-    const nav = [Markup.button.callback("Previous","prev"),Markup.button.callback("Next","next")];
+    const nav = [Markup.button.callback("⬅️ Previous","prev"),Markup.button.callback("Next ➡️","next")];
     let opt = [];
     for(let i=1;i<=noOfKeys;i++) {
         opt.push(Markup.button.callback(`${i}`,`${i}`));
