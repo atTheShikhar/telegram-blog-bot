@@ -129,8 +129,8 @@ bot.action('prev',async (ctx) => {
 })
 
 
-
 //Launch the bot
+//Remove the webhook parameter if running on local machine
 bot.launch({
     webhook: {
         domain: process.env.URL,
